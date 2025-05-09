@@ -1,0 +1,203 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #b5f3c2, #d6b7f9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.invitation-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  z-index: 10;
+}
+
+.invitation-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #5a2a82;
+}
+
+.question {
+  font-size: 1.5rem;
+  margin: 10px 0 20px;
+}
+
+.names {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.name.green {
+  color: #2e8b57;
+  font-weight: bold;
+}
+
+.name.purple {
+  color: #6a1b9a;
+  font-weight: bold;
+}
+
+.name.or {
+  color: #555;
+}
+
+.details {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.rsvp {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.countdown {
+  font-size: 1.2rem;
+  color: #5a2a82;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+input[type="text"], input[type="tel"], input[type="number"] {
+  font-size: 1rem;
+}
+
+button {
+  background-color: #25d366;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #1ebc59;
+}
+
+#formStatus {
+  font-size: 1rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Compartilhamento */
+.share-buttons {
+  margin-top: 20px;
+}
+
+.share-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4e7bf9;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.share-button:hover {
+  background-color: #3561b4;
+}
+
+/* Ursinhos animados */
+.bear-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bear {
+  position: absolute;
+  top: -50px;
+  font-size: 24px;
+  animation: fall linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .invitation-container {
+    padding: 20px;
+  }
+
+  .invitation-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .question {
+    font-size: 1.3rem;
+  }
+
+  .names {
+    font-size: 1.2rem;
+  }
+
+  .details, .rsvp {
+    font-size: 0.95rem;
+  }
+
+  .countdown {
+    font-size: 1.1rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
