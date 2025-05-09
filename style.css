@@ -15,6 +15,7 @@ body, html {
   padding: 20px;
   overflow: hidden;
   position: relative;
+  max-width: 100%;
 }
 
 .invitation-container {
@@ -26,6 +27,8 @@ body, html {
   padding: 30px;
   text-align: center;
   z-index: 10;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .invitation-container h1 {
@@ -171,9 +174,38 @@ button:hover {
   }
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
+/* Responsivo para telas menores que 1200px */
+@media (max-width: 1200px) {
   .invitation-container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .invitation-container h1 {
+    font-size: 2rem;
+  }
+
+  .question {
+    font-size: 1.4rem;
+  }
+
+  .names {
+    font-size: 1.3rem;
+  }
+
+  .details, .rsvp {
+    font-size: 1rem;
+  }
+
+  .countdown {
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsivo para telas menores que 992px (tablets e dispositivos médios) */
+@media (max-width: 992px) {
+  .invitation-container {
+    width: 90%;
     padding: 20px;
   }
 
@@ -194,10 +226,82 @@ button:hover {
   }
 
   .countdown {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   button {
     font-size: 1rem;
+  }
+}
+
+/* Responsivo para telas menores que 768px (dispositivos móveis padrão) */
+@media (max-width: 768px) {
+  .invitation-container {
+    padding: 15px;
+  }
+
+  .invitation-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .question {
+    font-size: 1.2rem;
+  }
+
+  .names {
+    font-size: 1rem;
+  }
+
+  .details, .rsvp {
+    font-size: 0.85rem;
+  }
+
+  .countdown {
+    font-size: 1rem;
+  }
+
+  input, button {
+    font-size: 1rem;
+  }
+}
+
+/* Responsivo para telas menores que 480px (dispositivos móveis pequenos) */
+@media (max-width: 480px) {
+  .invitation-container {
+    padding: 10px;
+  }
+
+  .invitation-container h1 {
+    font-size: 1.4rem;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  .names {
+    font-size: 0.9rem;
+  }
+
+  .details, .rsvp {
+    font-size: 0.75rem;
+  }
+
+  .countdown {
+    font-size: 0.9rem;
+  }
+
+  input, button {
+    font-size: 1rem;
+  }
+
+  .share-buttons {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .share-button {
+    width: 100%;
+    margin: 10px 0;
   }
 }
