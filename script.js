@@ -35,7 +35,7 @@ form.addEventListener('submit', function (event) {
 
 // === Contagem regressiva ===
 const countdownEl = document.getElementById('countdown');
-const targetDate = new Date('2025-05-30T13:00:00');
+const targetDate = new Date('2025-05-31T14:00:00'); // Corrigido para 31/05/2025 14h
 
 function updateCountdown() {
   const now = new Date();
