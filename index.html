@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Chá Revelação – Vicente ou Elisa?" />
+  <meta property="og:description" content="Participe do Chá Revelação e descubra se é o Vicente ou a Elisa!" />
+  <meta property="og:image" content="link_da_imagem_do_evento.jpg" />
+  <meta property="og:url" content="https://seusite.com" />
+  <title>Chá Revelação – Vicente ou Elisa?</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="bear-container" aria-hidden="true"></div>
+<script src="bears.js"></script>
+
+  <div class="invitation-container">
+    <h1>Chá Revelação</h1>
+    <p class="question">Quem vem aí?</p>
+
+    <div class="names">
+      <span class="name green">Vicente 💚</span>
+      <span class="name or">ou</span>
+      <span class="name purple">Elisa 💜</span>
+    </div>
+
+    <p class="details">
+      Esperamos você para descobrir junt@s!<br />
+      <strong>Data:</strong> 30 de maio de 2025<br />
+      <strong>Hora:</strong> 13h<br />
+      <strong>Local:</strong> Rua Paulo Alves Silva, 811 – Paulistano 1
+    </p>
+
+    <p class="rsvp">
+      Confirme presença até 25 de maio<br />
+      <strong>WhatsApp:</strong> (16) 99295-5432
+    </p>
+
+    <div id="countdown" class="countdown"></div>
+
+    <form id="confirmationForm" onsubmit="sendConfirmation(event)">
+      <label for="name"><i class="fas fa-user"></i> Nome:</label>
+      <input type="text" id="name" name="name" required aria-label="Nome do convidado" />
+
+      <label for="phone"><i class="fas fa-phone"></i> Telefone:</label>
+      <input type="tel" id="phone" name="phone" required aria-label="Telefone do convidado" pattern="^\(\d{2}\)\s?\d{4,5}-\d{4}$" title="Exemplo: (11) 91234-5678" />
+
+      <label for="guests"><i class="fas fa-users"></i> Acompanhantes:</label>
+      <input type="number" id="guests" name="guests" min="0" required aria-label="Número de acompanhantes" />
+
+      <button type="submit" id="submitBtn">Confirmar Presença 💌</button>
+
+      <p id="formStatus"></p>
+    </form>
+
+    <div class="share-buttons">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://seusite.com" target="_blank" class="share-button">Compartilhar no Facebook</a>
+      <a href="https://twitter.com/intent/tweet?text=Participe%20do%20Chá%20Revelação%20de%20Vicente%20ou%20Elisa!&url=https://seusite.com" target="_blank" class="share-button">Compartilhar no Twitter</a>
+    </div>
+  </div>
+
+  <script src="bears.js"></script>
+  <script>
+    // Contagem regressiva
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date('2025-05-30T13:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "É hoje! 💖";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent =
+        `Faltam ${days}d ${hours}h ${minutes}m ${seconds}s para o grande momento!`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Envio de dados via WhatsApp para o número (16) 99295-5432
+    function sendConfirmation(event) {
+      event.preventDefault(); // Impede o envio do formulário tradicional
+
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const guests = document.getElementById('guests').value;
+
+      const formStatus = document.getElementById('formStatus');
+      const submitButton = document.getElementById('submitBtn');
+
+      // Validação dos campos
+      if (!name || !phone || guests < 0) {
+        formStatus.textContent = "Por favor, preencha todos os campos corretamente!";
+        formStatus.style.color = "red";
+        return;
+      }
+
+      const message = `
+        Confirmo minha presença no Chá Revelação de Vicente ou Elisa!\n
+        Nome: ${name}\n
+        Telefone: ${phone}\n
+        Acompanhantes: ${guests}
+      `;
+      
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/5516992955432?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
+
+      formStatus.textContent = `Presença confirmada! 💖 Obrigado, ${name}! Nos vemos no evento!`;
+      formStatus.style.color = "#28a745";
+      submitButton.disabled = true;
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
